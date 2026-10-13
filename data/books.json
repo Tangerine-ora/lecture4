@@ -1,0 +1,14 @@
+[
+  {"id": "B001", "title": "Flutter实战", "category": "移动开发", "borrowCount": 128},
+  {"id": "B002", "title": "Dart编程语言", "category": "移动开发", "borrowCount": 96},
+  {"id": "B003", "title": "算法导论", "category": "计算机基础", "borrowCount": 210},
+  {"id": "B004", "title": "深入理解计算机系统", "category": "计算机基础", "borrowCount": 175},
+  {"id": "B005", "title": "离散数学及其应用", "category": "数学", "borrowCount": 88},
+  {"id": "B006", "title": "线性代数", "category": "数学", "borrowCount": 64},
+  {"id": "B007", "title": "重构：改善既有代码的设计", "category": "软件工程", "borrowCount": 142},
+  {"id": "B008", "title": "代码大全", "category": "软件工程", "borrowCount": 117},
+  {"id": "B009", "title": "人月神话", "category": "软件工程", "borrowCount": 73},
+  {"id": "B010", "title": "计算机网络：自顶向下方法", "category": "计算机基础", "borrowCount": 158},
+  {"id": "B011", "title": "概率论基础", "category": "数学", "borrowCount": 45},
+  {"id": "B012", "title": "Kotlin移动应用开发", "category": "移动开发", "borrowCount": 59}
+]
