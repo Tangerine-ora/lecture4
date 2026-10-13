@@ -16,7 +16,7 @@
 ## 三、过程记录
 
 1. `dart create async_json` 创建命令行项目脚手架；
-2. `dart pub add path` 添加 path 依赖（自动写入 ^1.9.1 约束），将统一数据集 books.json（id/title/category/borrowCount 四字段，共 12 条）复制到 `data/` 目录 → 提交 `feat: dataset & deps ready`；
+2. `dart pub add path` 添加 path 依赖（自动写入 ^1.9.1 约束），将统一数据集 books.json（id/title/category/author/rating/borrowCount/month 七字段，共 36 条）复制到 `data/` 目录 → 提交 `feat: dataset & deps ready`；
 3. 编写 `lib/book.dart`（Book 模型，fromJson/toJson）、`lib/stats.dart`（loadBooks 异步读取+解析、countByCategory、topByBorrow）、`bin/async_json.dart`（main 中 async/await 串起整个流程）→ 提交 `feat: parse & stats from books.json`；
 4. `dart run` 验证正常路径；把 `data/books.json` 临时改名再运行，验证文件缺失路径输出友好提示，随后恢复文件；
 5. 在 books.json 中手工删掉一个对象的 borrowCount 字段做故意实验：修复前 fromJson 直接类型断言会抛 null 断言错误，修复后缺失字段默认 0，程序正常输出；补充三类异常的可读提示与单元测试（6 个用例全过）→ 提交 `feat: robust missing-field & file handling`；
@@ -75,7 +75,7 @@ final results = await Future.wait([task('A', 1), task('B', 1), task('C', 1)]); /
 
 ## 五、检查点结果
 
-- 正常路径：`dart run` 输出图书总数 12、四个类目各 3 本、Top3 为《算法导论》210 次、《深入理解计算机系统》175 次、《计算机网络：自顶向下方法》158 次，与数据集手工核算一致。
+- 正常路径：`dart run` 输出图书总数 36、六个类目（计算机技术/经济管理/科普百科/文学小说/艺术设计/历史哲学）各 6 本、Top3 为《万历十五年》91 次、《渲染管线十二讲》87 次、《茶马古道》87 次，与数据集手工核算一致。
 - 异常路径：把 `data/books.json` 改名为 `books.json.bak` 后运行，输出"出错了: Exception: 数据文件缺失，请检查 data\books.json"，程序正常结束无崩溃堆栈；恢复文件后再次运行输出正确。
 - await 作用解释：await 让 main 在等待文件 IO 完成时不阻塞事件循环，拿到结果（Future 解包成 String）后才继续执行解析，保证"读完再解析"的时序。
 
